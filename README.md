@@ -1,1 +1,1 @@
-# SQL
+# sql queries from leetcode
