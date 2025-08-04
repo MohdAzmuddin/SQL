@@ -1,0 +1,24 @@
+create database Aj
+use Aj
+
+create table Azmu(
+id int,
+salary int
+);
+
+delimiter //
+create trigger triggerAfter
+before insert on Azmu
+for each row
+begin
+     if new.salary<0
+      then set new.salary = 0;
+     end if;
+END;
+//
+delimiter ;
+
+insert into Azmu
+values(1,-500);
+
+select*from Azmu
