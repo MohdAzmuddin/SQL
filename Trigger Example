@@ -1,3 +1,9 @@
+--A trigger is a special stored procedure that automatically executes in response to certain events on a table, such as:
+--INSERT
+--UPDATE
+--DELETE
+
+
 create database Aj
 use Aj
 
