@@ -12,3 +12,10 @@ on s.employee_id = e.employee_id
 where e.name is null
 
 order by employee_id asc
+
+or
+# Write your MySQL query statement below
+select employee_id from Employees where employee_id not in (select employee_id from Salaries)
+union 
+select employee_id from Salaries where employee_id not in (select employee_id from Employees)
+order by employee_id asc
