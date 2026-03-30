@@ -1,1 +1,77 @@
-Dele
+These three SQL commands are all used to remove data, but they work very differently:
+
+### **1. DELETE**
+
+* Removes **specific rows** from a table.
+* You can use a **WHERE clause** to filter.
+* **Transaction-safe** (can rollback).
+* Slower for large data.
+
+**Example:**
+
+```sql
+DELETE FROM employees WHERE id = 10;
+```
+
+**Key points:**
+
+* Row-by-row deletion
+* Triggers are fired
+* Can be rolled back
+
+---
+
+### **2. TRUNCATE**
+
+* Removes **all rows** from a table.
+* **No WHERE clause**.
+* Much faster than DELETE.
+
+**Example:**
+
+```sql
+TRUNCATE TABLE employees;
+```
+
+**Key points:**
+
+* Deletes entire table data quickly
+* Resets identity (auto-increment)
+* Minimal logging
+* Usually **cannot be rolled back** (depends on DB)
+* Triggers are **not fired**
+
+---
+
+### **3. DROP**
+
+* Removes the **entire table structure** (not just data).
+* Table is completely deleted from the database.
+
+**Example:**
+
+```sql
+DROP TABLE employees;
+```
+
+**Key points:**
+
+* Deletes data + structure
+* Frees memory/storage
+* Cannot be rolled back
+* You must recreate the table to use it again
+
+---
+
+### **Quick Comparison**
+
+| Feature      | DELETE         | TRUNCATE   | DROP      |
+| ------------ | -------------- | ---------- | --------- |
+| Removes rows | Yes (selected) | Yes (all)  | Yes (all) |
+| WHERE clause | Yes            | No         | No        |
+| Table exists | Yes            | Yes        | No        |
+| Rollback     | Yes            | Usually No | No        |
+| Speed        | Slow           | Fast       | Fast      |
+| Triggers     | Yes            | No         | No        |
+
+
